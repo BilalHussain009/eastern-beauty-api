@@ -6,6 +6,7 @@ const router = express.Router();
 router.get("/", auth, async (req, res) => {
   const customers = await Customer.find()
     .select("-__v")
+    .select("-password")
     .sort("name");
   res.send(customers);
 });

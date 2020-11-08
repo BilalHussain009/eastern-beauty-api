@@ -10,6 +10,10 @@ const userSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 50
   },
+  gender:{
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,
@@ -31,6 +35,7 @@ userSchema.methods.generateAuthToken = function() {
     {
       _id: this._id,
       name: this.name,
+      gender: this.gender,
       email: this.email,
       isAdmin: this.isAdmin
     },
@@ -47,6 +52,7 @@ function validateUser(user) {
       .min(2)
       .max(50)
       .required(),
+    gender: Joi.string().required(),
     email: Joi.string()
       .min(5)
       .max(255)
