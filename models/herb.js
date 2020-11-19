@@ -23,12 +23,9 @@ const Herb = mongoose.model('Herb', new mongoose.Schema({
       String
   ],
   usage: {
-    effect: {
-        type: String,
-    },
-    whenToUseIt: {
-        type: String
-    },
+    whenToUseIt: [
+        String
+    ],
     howToUseIt: {
         type: String
     },
