@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const Herb = mongoose.model('Herb', new mongoose.Schema({
+const HerbBG = mongoose.model('HerbBG', new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -35,7 +35,7 @@ const Herb = mongoose.model('Herb', new mongoose.Schema({
 
 }));
 
-function validateHerb(herb) {
+function validateHerbBG(herbBG) {
   const schema = Joi.object( {
     name: Joi.string().required(),
     synonims: Joi.array().items(Joi.string()),
@@ -46,8 +46,8 @@ function validateHerb(herb) {
     usage: Joi.object()
   });
 
-  return schema.validate(herb);
+  return schema.validate(herbBG);
 }
 
-exports.Herb = Herb; 
-exports.validate = validateHerb;
+exports.HerbBG = HerbBG; 
+exports.validate = validateHerbBG;

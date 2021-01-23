@@ -4,6 +4,7 @@ const _ = require("lodash");
 const { User, validate } = require("../models/user");
 const express = require("express");
 const router = express.Router();
+const admin = require("../middleware/admin");
 
 router.get("/", auth, async (req, res) => {
   const user = await User.find().select("-__v").select("-password").sort("name") ;
@@ -26,6 +27,15 @@ router.post("/", async (req, res) => {
   res
     .header("x-auth-token", token)
     .send(_.pick(user, ["_id", "name","gender", "email", "isAdmin"]));
+});
+
+router.delete("/:id", [auth, admin], async (req, res) => {
+  const user = await User.findByIdAndRemove(req.params.id);
+
+  if (!user)
+    return res.status(404).send("The movie with the given ID was not found.");
+
+  res.send(user);
 });
 
 module.exports = router;

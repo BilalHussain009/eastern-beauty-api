@@ -1,4 +1,4 @@
-const { Herb, validate } = require("../models/herb");
+const { HerbBG, validate } = require("../models/herbBG");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
 const validateObjectId = require("../middleware/validateObjectId");
@@ -8,12 +8,12 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const herbs = await Herb.find().select("-__v").sort("name") ;
+  const herbs = await HerbBG.find().select("-__v").sort("name") ;
   res.send(herbs);
 });
 
 router.get("/:id", validateObjectId, async (req, res) => {
-  const herb = await Herb.findById(req.params.id).select("-__v");
+  const herb = await HerbBG.findById(req.params.id).select("-__v");
 
   if (!herb)
     return res.status(404).send("The herb with the given ID was not found.");
@@ -25,8 +25,7 @@ router.post("/", [auth], async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const herb = new Herb({
-      
+  const herbBG = new HerbBG({
     name: req.body.name,
       synonims: req.body.synonims,
       tags:req.body.tags,
@@ -35,16 +34,16 @@ router.post("/", [auth], async (req, res) => {
       chemicalIngredients: req.body.chemicalIngredients,
       usage: req.body.usage
   });
-  await herb.save();
+  await herbBG.save();
 
-  res.send(herb);
+  res.send(herbBG);
 });
 
 router.put("/:id", [auth], async (req, res) => {
   const { error } = validate(req.body.herb);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const herb = await Herb.findByIdAndUpdate(
+  const herb = await HerbBG.findByIdAndUpdate(
     req.params.id,
     {
       name: req.body.name,
@@ -66,7 +65,7 @@ router.put("/:id", [auth], async (req, res) => {
 
 
 router.delete("/:id", [auth, admin], async (req, res) => {
-  const herb = await Herb.findByIdAndRemove(req.params.id);
+  const herb = await HerbBG.findByIdAndRemove(req.params.id);
 
   if (!herb)
     return res.status(404).send("The movie with the given ID was not found.");

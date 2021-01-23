@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const Herb = mongoose.model('Herb', new mongoose.Schema({
+const Oil = mongoose.model('Oil', new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -21,6 +21,15 @@ const Herb = mongoose.model('Herb', new mongoose.Schema({
   chemicalIngredients: [
       String
   ],
+  disclaimers: [
+      String
+  ],
+  extractionMethods: [
+      String
+  ],
+  combinations : [
+      String
+  ],
   usage: {
     whenToUseIt: [
         String
@@ -35,7 +44,7 @@ const Herb = mongoose.model('Herb', new mongoose.Schema({
 
 }));
 
-function validateHerb(herb) {
+function validateOil(oil) {
   const schema = Joi.object( {
     name: Joi.string().required(),
     synonims: Joi.array().items(Joi.string()),
@@ -43,11 +52,14 @@ function validateHerb(herb) {
     location: Joi.array().items(Joi.string()),
     usedParts: Joi.array().items(Joi.string()),
     chemicalIngredients: Joi.array().items(Joi.string()),
+    disclaimers: Joi.array().items(Joi.string()),
+    extractionMethods: Joi.array().items(Joi.string()),
+    combinations: Joi.array().items(Joi.string()),
     usage: Joi.object()
   });
 
-  return schema.validate(herb);
+  return schema.validate(oil);
 }
 
-exports.Herb = Herb; 
-exports.validate = validateHerb;
+exports.Oil = Oil; 
+exports.validate = validateOil;
