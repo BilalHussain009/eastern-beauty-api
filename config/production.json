@@ -1,1 +1,4 @@
-{}
+{
+  "jwtPrivateKey": "EB_jwtPrivateKey",
+  "db": "eb_db"
+}
