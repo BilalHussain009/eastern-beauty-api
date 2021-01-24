@@ -1,6 +1,6 @@
 {
   "jwtPrivateKey": "unsecureKey",
-  "db": "mongodb+srv://user123:simplepassword@eb.bvm0d.mongodb.net/EB?retryWrites=true&w=majority",
+  "db": "mongodb://user123:simplepassword@docdb-2021-01-24-12-24-36.cluster-csxh4vgyabro.us-east-1.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false",
   "port": "3900",
   "requiresAuth": false
 }
