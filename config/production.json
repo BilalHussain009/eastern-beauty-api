@@ -1,4 +1,4 @@
 {
   "jwtPrivateKey": "EB_jwtPrivateKey",
-  "db": "MONGO_URL"
+  "db": "mongodb+srv://user123:simplepassword@eb.bvm0d.mongodb.net/EB?retryWrites=true&w=majority"
 }
