@@ -1,6 +1,6 @@
 {
   "jwtPrivateKey": "unsecureKey",
-  "db": "MONGO_URL",
+  "db": "mongodb+srv://user123:simplepassword@eb.bvm0d.mongodb.net/EB?retryWrites=true&w=majority",
   "port": "3900",
   "requiresAuth": false
 }
