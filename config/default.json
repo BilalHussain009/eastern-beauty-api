@@ -1,6 +1,6 @@
 {
   "jwtPrivateKey": "unsecureKey",
-  "db": "mongodb://localhost/ebeauty",
+  "db": "MONGO_URL",
   "port": "3900",
   "requiresAuth": false
 }
