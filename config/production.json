@@ -1,4 +1,4 @@
 {
   "jwtPrivateKey": "EB_jwtPrivateKey",
-  "db": "MONGO_URL"
+  "db": "mongodb+srv://EasternBeauty:EasternBeauty@cluster0.swlvj.mongodb.net/test"
 }

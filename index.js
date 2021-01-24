@@ -3,7 +3,7 @@ const express = require("express");
 const config = require("config");
 const app = express();
 
-
+console.log("hello")
 require("./startup/cors")(app);
 require("./startup/routes")(app);
 require("./startup/db")();
